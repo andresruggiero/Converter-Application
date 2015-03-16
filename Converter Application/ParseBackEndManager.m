@@ -32,6 +32,8 @@
     
     NSLog(@"Getting the latest config...");
     
+    
+    
     __block NSArray *objectArray = nil;
     
     [PFConfig getConfigInBackgroundWithBlock:^(PFConfig *config, NSError *error) {
