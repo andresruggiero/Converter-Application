@@ -45,10 +45,11 @@
             for (NSString *secondCode in myDic2) {
                 NSLog(@"From: %@ to: %@ rate: %@",code,secondCode,[myDic2 objectForKey:secondCode]);
                 Item *item = [[Item alloc] init];
-                item.baseCurrency = code;
-                item.fromCurrency = code;
-                item.toCurrency = secondCode;
-                item.exchangeRate = [myDic2 objectForKey:secondCode];
+#warning Modify item property set in Property Lists setup
+                //item.baseCurrency = code;
+                //item.fromCurrency = code;
+                //item.toCurrency = secondCode;
+                //item.exchangeRate = [myDic2 objectForKey:secondCode];
                 [self.categories addObject:item];
             }
             CurrencyCollection *currencyCollection = [[CurrencyCollection alloc] initWithName:categoryName andArrayOfItems:self.categories];

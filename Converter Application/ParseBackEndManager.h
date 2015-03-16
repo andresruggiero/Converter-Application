@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class ExchangeManager;
 
-@interface ParseBackEndManager : NSObject
+@interface ParseBackEndManager : NSObject{
+    ExchangeManager *exchangeManager;
+}
 
--(void) uploadDataFromParse;
+@property (strong, nonatomic) ExchangeManager *exchangeManager;
 
 @end

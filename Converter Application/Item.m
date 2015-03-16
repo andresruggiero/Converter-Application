@@ -10,6 +10,6 @@
 
 @implementation Item
 
-@synthesize baseCurrency, fromCurrency, toCurrency, exchangeRate;
+@synthesize baseCurrency,baseName,targetCurrency,targetName,exchangeRate;
 
 @end

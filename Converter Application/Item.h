@@ -10,9 +10,10 @@
 
 @interface Item : NSObject
 
+@property (strong, nonatomic) NSString *targetName;
+@property (strong, nonatomic) NSString *targetCurrency;
+@property (strong, nonatomic) NSString *baseName;
 @property (strong, nonatomic) NSString *baseCurrency;
-@property (strong, nonatomic) NSString *fromCurrency;
-@property (strong, nonatomic) NSString *toCurrency;
 @property (strong, nonatomic) NSString *exchangeRate;
 
 @end

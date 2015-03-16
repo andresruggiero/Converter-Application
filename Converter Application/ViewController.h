@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@class ExchangeManager;
 
+@interface ViewController : UIViewController{
+    ExchangeManager *exchangeManager;
+}
+
+@property (strong, nonatomic) ExchangeManager *exchangeManager;
 
 @end
 

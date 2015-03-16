@@ -7,7 +7,6 @@
 //
 
 #import "StoreCoordinator.h"
-//#import "StoreManager.h"
 #import "ExchangeManager.h"
 #import "ExchangeCategory.h"
 #import "CurrencyCollection.h"

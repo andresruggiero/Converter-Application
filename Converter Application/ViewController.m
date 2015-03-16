@@ -9,6 +9,10 @@
 #import "ViewController.h"
 #import <Parse/Parse.h>
 #import "ParseBackEndManager.h"
+#import "ExchangeManager.h"
+#import "ExchangeCategory.h"
+#import "CurrencyCollection.h"
+#import "Item.h"
 
 @interface ViewController ()
 
@@ -55,8 +59,19 @@
         NSLog(@"Welcome Messsage = %@", welcomeMessage);
     }];*/
     
+    exchangeManager = [ExchangeManager sharedManager];
+    
     ParseBackEndManager *pbackend = [[ParseBackEndManager alloc] init];
-    [pbackend uploadDataFromParse];
+    
+    ExchangeCategory *cat = [exchangeManager getExchangeCategoryWithName:@"Currency"];
+    
+    NSLog(@"Cat: %@",cat);
+    
+    CurrencyCollection *currcll = [cat.currencyCollectionArray objectAtIndex:0];
+    
+    Item *item = [currcll.itemsArray objectAtIndex:0];
+    
+    NSLog(@"Item: %@ %@ %@",item.baseCurrency, item.targetCurrency, item.exchangeRate);
     
     // Do any additional setup after loading the view, typically from a nib.
 }
