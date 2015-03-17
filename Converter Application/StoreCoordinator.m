@@ -12,6 +12,7 @@
 #import "CurrencyCollection.h"
 #import "Item.h"
 #import "PListManager.h"
+#import "ParseBackEndManager.h"
 
 @implementation StoreCoordinator{
     // Array that contains the available codes
@@ -21,7 +22,7 @@
     NSArray *lengthCodeArray;
 }
 
-@synthesize storeManager;
+@synthesize parseManager;
 @synthesize exchangeManager;
 @synthesize pListManager;
 
@@ -30,15 +31,14 @@
     self = [super init];
     if (self) {
         
-#warning Need to replace storeManager with ParseBackEndManager
-        //storeManager = [[StoreManager alloc] init];
+        self.parseManager = [[ParseBackEndManager alloc] init];
         exchangeManager = [ExchangeManager sharedManager];
         
         codeArray = @[@"USD",@"EUR",@"GBP",@"CHF"];
         lengthCodeArray = [[NSArray alloc] initWithObjects:@"mm",@"cm",@"m",@"in",@"ft", nil];
         
         //[self saveDataFromXml];
-        [self saveDataFromPLists];
+        //[self saveDataFromPLists];
     }
     return self;
 }

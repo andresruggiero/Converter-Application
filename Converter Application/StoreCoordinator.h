@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class  StoreManager;
+@class ParseBackEndManager;
 @class ExchangeManager;
 @class PListManager;
 
@@ -16,7 +16,7 @@
     ExchangeManager *exchangeManager;
 }
 
-@property StoreManager *storeManager;
+@property ParseBackEndManager *parseManager;
 @property (strong, nonatomic) ExchangeManager *exchangeManager;
 @property (strong, nonatomic) PListManager *pListManager;
 

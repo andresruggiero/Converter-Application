@@ -56,7 +56,7 @@
             [item setTargetName:object[@"targetName"]];
             [item setExchangeRate:object[@"exchangeRate"]];
             [arrayOfItems addObject:item];
-            //NSLog(@"Base: %@ Target:%@ Rate:%@",item.baseName,item.targetName,item.exchangeRate);
+            NSLog(@"Base: %@ Target:%@ Rate:%@",item.baseName,item.targetName,item.exchangeRate);
         }
         
         // Creating a CurrencyCollection for each code

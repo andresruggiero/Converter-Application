@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class ExchangeManager;
+@class StoreCoordinator;
 
 @interface ViewController : UIViewController{
     ExchangeManager *exchangeManager;
 }
 
 @property (strong, nonatomic) ExchangeManager *exchangeManager;
+@property (strong, nonatomic) StoreCoordinator *storeCoordinator;
 
 @end
 
