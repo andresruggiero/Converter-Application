@@ -30,7 +30,7 @@
 
 -(void) uploadDataFromParse{
     
-    NSArray *message = [self loadParameter:@"currencyArray"];
+    NSArray *message = [exchangeManager loadParameter:@"currencyArray"];
     //NSLog(@"Messsage = %@", message);
     
     // Creating Currency exchangeCategory
@@ -56,7 +56,7 @@
             [item setTargetName:object[@"targetName"]];
             [item setExchangeRate:object[@"exchangeRate"]];
             [arrayOfItems addObject:item];
-            NSLog(@"Base: %@ Target:%@ Rate:%@",item.baseName,item.targetName,item.exchangeRate);
+            //NSLog(@"Base: %@ Target:%@ Rate:%@",item.baseName,item.targetName,item.exchangeRate);
         }
         
         // Creating a CurrencyCollection for each code
@@ -75,24 +75,6 @@
     
     // Setting the categoryArray to the ExchangeManager
     [exchangeManager setCategoryArray:arrayOfExchangeCategory];
-    
-}
-
--(NSArray *) loadParameter:(NSString *)parameter{
-    
-    PFConfig *config = [PFConfig getConfig];
-    
-    config = [PFConfig currentConfig];
-    
-    NSLog(@"Getting the latest config...");
-    NSArray *message = config[parameter];
-    
-    if (!message) {
-        NSLog(@"Falling back to default message.");
-        //welcomeMessage = @"Welcome!";
-    }
-    
-    return message;
     
 }
 

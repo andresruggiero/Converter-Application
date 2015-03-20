@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @class ExchangeCategory;
+@class CurrencyCollection;
+@class Item;
 
 @interface ExchangeManager : NSObject
 
@@ -25,5 +27,10 @@
 -(NSArray *) getAllCategories;
 -(NSArray *) getAllCurrencyCollectionsFromCategoryWithName:(NSString *)categoryName;
 -(ExchangeCategory *) getExchangeCategoryWithName:(NSString *)name;
+-(CurrencyCollection *) getCurrencyCollectionWithName:(NSString *)name;
+-(NSMutableArray *)getCurrencyCollectionsWithNames:(NSArray *)names;
+-(Item *)getItemFromCurrencyCollection:(CurrencyCollection *)collection fromBaseCurrency:(NSString *)baseCurrency toTargetCurrency:(NSString *)targetCurrency;
+
+-(NSArray *) loadParameter:(NSString *)parameter;
 
 @end

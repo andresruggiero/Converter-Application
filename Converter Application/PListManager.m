@@ -36,16 +36,19 @@
     //for (NSString *category in categoriesArray) {
         //NSMutableDictionary *myDic = [self loadPListWithName:category];
     for (NSString *categoryName in myDic) {
-        NSLog(@"%@",categoryName);
+        //NSLog(@"%@",categoryName);
         ExchangeCategory *exchangeCategory = [[ExchangeCategory alloc] initWithName:categoryName];
         NSMutableDictionary *categoryDictionary = [[NSMutableDictionary alloc] initWithDictionary:[myDic objectForKey:categoryName]];
         for (NSString *code in categoryDictionary) {
             NSMutableDictionary *myDic2 = [[NSMutableDictionary alloc] initWithDictionary:[categoryDictionary objectForKey:code]];
-            NSLog(@"Code %@:",code);
+            //NSLog(@"Code %@:",code);
             for (NSString *secondCode in myDic2) {
-                NSLog(@"From: %@ to: %@ rate: %@",code,secondCode,[myDic2 objectForKey:secondCode]);
+                //NSLog(@"From: %@ to: %@ rate: %@",code,secondCode,[myDic2 objectForKey:secondCode]);
                 Item *item = [[Item alloc] init];
-#warning Modify item property set in Property Lists setup
+//#warning Modify item property set in Property Lists setup
+                item.baseCurrency = code;
+                item.targetCurrency = secondCode;
+                item.exchangeRate = [myDic2 objectForKey:secondCode];
                 //item.baseCurrency = code;
                 //item.fromCurrency = code;
                 //item.toCurrency = secondCode;
@@ -68,7 +71,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     if ([fileManager fileExistsAtPath:path]) {
-        NSLog(@"The file exists");
+        NSLog(@"The file exists, PList Load Succesfull");
     } else {
         NSLog(@"The file does not exist");
     }

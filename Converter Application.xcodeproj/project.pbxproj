@@ -34,6 +34,9 @@
 		4C0AFA031AB34F9200BBB61F /* ParseBackEndManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0AFA021AB34F9200BBB61F /* ParseBackEndManager.m */; };
 		4C63F8B41AB3DD30006DEFFF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C63F8B21AB3DD30006DEFFF /* Bolts.framework */; };
 		4C63F8B51AB3DD30006DEFFF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C63F8B31AB3DD30006DEFFF /* Parse.framework */; };
+		4CC60B081AB9DE4100A5B346 /* Units.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CC60B071AB9DE4100A5B346 /* Units.plist */; };
+		4CC60B0B1AB9E01900A5B346 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC60B0A1AB9E01900A5B346 /* ContentViewController.m */; };
+		4CC60B111AB9E09A00A5B346 /* CustomContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC60B101AB9E09A00A5B346 /* CustomContentCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,11 @@
 		4C0AFA021AB34F9200BBB61F /* ParseBackEndManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseBackEndManager.m; sourceTree = "<group>"; };
 		4C63F8B21AB3DD30006DEFFF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		4C63F8B31AB3DD30006DEFFF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		4CC60B071AB9DE4100A5B346 /* Units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Units.plist; sourceTree = "<group>"; };
+		4CC60B091AB9E01900A5B346 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		4CC60B0A1AB9E01900A5B346 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		4CC60B0F1AB9E09A00A5B346 /* CustomContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomContentCell.h; sourceTree = "<group>"; };
+		4CC60B101AB9E09A00A5B346 /* CustomContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomContentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +164,7 @@
 		4C0AF9A21AB349B600BBB61F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4CC60B071AB9DE4100A5B346 /* Units.plist */,
 				4C0AF9A31AB349B600BBB61F /* Info.plist */,
 				4C0AF9A41AB349B600BBB61F /* main.m */,
 			);
@@ -203,6 +212,8 @@
 		4C0AF9EA1AB34D3100BBB61F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4CC60B0F1AB9E09A00A5B346 /* CustomContentCell.h */,
+				4CC60B101AB9E09A00A5B346 /* CustomContentCell.m */,
 				4C0AF9AC1AB349B600BBB61F /* Main.storyboard */,
 				4C0AF9B11AB349B600BBB61F /* LaunchScreen.xib */,
 			);
@@ -214,6 +225,8 @@
 			children = (
 				4C0AF9A91AB349B600BBB61F /* ViewController.h */,
 				4C0AF9AA1AB349B600BBB61F /* ViewController.m */,
+				4CC60B091AB9E01900A5B346 /* ContentViewController.h */,
+				4CC60B0A1AB9E01900A5B346 /* ContentViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -336,6 +349,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CC60B081AB9DE4100A5B346 /* Units.plist in Resources */,
 				4C0AF9AE1AB349B600BBB61F /* Main.storyboard in Resources */,
 				4C0AF9B31AB349B600BBB61F /* LaunchScreen.xib in Resources */,
 				4C0AF9B01AB349B600BBB61F /* Images.xcassets in Resources */,
@@ -357,8 +371,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C0AF9F61AB34D6100BBB61F /* CurrencyCollection.m in Sources */,
+				4CC60B0B1AB9E01900A5B346 /* ContentViewController.m in Sources */,
 				4C0AF9F51AB34D6100BBB61F /* ExchangeCategory.m in Sources */,
 				4C0AF9AB1AB349B600BBB61F /* ViewController.m in Sources */,
+				4CC60B111AB9E09A00A5B346 /* CustomContentCell.m in Sources */,
 				4C0AF9A81AB349B600BBB61F /* AppDelegate.m in Sources */,
 				4C0AF9F41AB34D6100BBB61F /* ExchangeManager.m in Sources */,
 				4C0AF9F71AB34D6100BBB61F /* Item.m in Sources */,

@@ -13,7 +13,6 @@
 #import "ExchangeCategory.h"
 #import "CurrencyCollection.h"
 #import "Item.h"
-#import "StoreCoordinator.h"
 
 @interface ViewController ()
 
@@ -21,12 +20,13 @@
 
 @implementation ViewController
 
-@synthesize storeCoordinator;
+@synthesize exchangeManager;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.storeCoordinator = [[StoreCoordinator alloc] init];
+    exchangeManager = [ExchangeManager sharedManager];
+    //self.storeCoordinator = [[StoreCoordinator alloc] init];
     
     /*PFQuery *query1 = [PFQuery queryWithClassName:@"Item"];
     [query1 whereKey:@"category" equalTo:@"Currency"];
@@ -64,11 +64,7 @@
         NSLog(@"Welcome Messsage = %@", welcomeMessage);
     }];*/
     
-    
-    
-    /*ParseBackEndManager *pbackend = [[ParseBackEndManager alloc] init];
-    
-    ExchangeCategory *cat = [exchangeManager getExchangeCategoryWithName:@"Currency"];
+    /*ExchangeCategory *cat = [exchangeManager getExchangeCategoryWithName:@"Currency"];
     
     NSLog(@"Cat: %@",cat);
     

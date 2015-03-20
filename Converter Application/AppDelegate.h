@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class ExchangeManager;
+@class StoreCoordinator;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+    ExchangeManager *exchangeManager;
+}
+
+@property (strong, nonatomic) ExchangeManager *exchangeManager;
+@property (strong, nonatomic) StoreCoordinator *storeCoordinator;
 
 @property (strong, nonatomic) UIWindow *window;
 

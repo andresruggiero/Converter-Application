@@ -38,7 +38,8 @@
         lengthCodeArray = [[NSArray alloc] initWithObjects:@"mm",@"cm",@"m",@"in",@"ft", nil];
         
         //[self saveDataFromXml];
-        //[self saveDataFromPLists];
+#warning Data load from plist incomplete
+        [self saveDataFromPLists];
     }
     return self;
 }
@@ -73,7 +74,7 @@
     //NSLog(@"%@",categoriesArray);
     
     for (ExchangeCategory *category in categoriesArray) {
-        NSLog(@"%@",category.exchangeCategoryName);
+        //NSLog(@"%@",category.exchangeCategoryName);
         [exchangeManager addExchangeCategory:category];
     }
     

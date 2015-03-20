@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "StoreCoordinator.h"
+#import "ExchangeManager.h"
 
 @interface AppDelegate ()
 
@@ -15,8 +17,12 @@
 
 @implementation AppDelegate
 
+@synthesize storeCoordinator;
+@synthesize exchangeManager;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     // Override point for customization after application launch.
     
     // [Optional] Power your app with Local Datastore. For more info, go to
@@ -37,6 +43,9 @@
                                                                              categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
+    
+    exchangeManager = [ExchangeManager sharedManager];
+    self.storeCoordinator = [[StoreCoordinator alloc] init];
     
     return YES;
 }

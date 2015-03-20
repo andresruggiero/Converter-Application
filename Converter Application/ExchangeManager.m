@@ -8,6 +8,9 @@
 
 #import "ExchangeManager.h"
 #import "ExchangeCategory.h"
+#import "CurrencyCollection.h"
+#import "Item.h"
+#import <Parse/Parse.h>
 
 @implementation ExchangeManager
 
@@ -67,6 +70,76 @@
         }
     }
     return currencyCollectionArray;
+}
+
+-(CurrencyCollection *) getCurrencyCollectionWithName:(NSString *)name{
+    
+    NSArray *currencyCollections = [self getAllCurrencyCollectionsFromCategoryWithName:@"Currency"];
+    CurrencyCollection *result = nil;
+    
+    for (CurrencyCollection *collection in currencyCollections) {
+        if ([collection.currencyCollectionName isEqualToString:name]) {
+            //NSLog(@"Testing: %@",collection.currencyCollectionName);
+            result = collection;
+        }
+    }
+    
+    return result;
+}
+
+-(NSMutableArray *)getCurrencyCollectionsWithNames:(NSArray *)names{
+    
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    for (NSString *object in names) {
+        if (![object isEqualToString:@"USD"]) {
+            CurrencyCollection *collection = [self getCurrencyCollectionWithName:object];
+            if (collection != nil) {
+                [result addObject:collection];
+            } else {
+                NSLog(@"Error: Currency Collection not found");
+            }
+        }
+    }
+    
+    return result;
+}
+
+-(Item *)getItemFromCurrencyCollection:(CurrencyCollection *)collection fromBaseCurrency:(NSString *)baseCurrency toTargetCurrency:(NSString *)targetCurrency{
+    
+    Item *finalItem;
+    
+    for (Item *item in collection.itemsArray) {
+        if (([item.baseCurrency isEqualToString:baseCurrency]) &&
+            ([item.targetCurrency isEqualToString:targetCurrency]) &&
+            (![item.baseCurrency isEqualToString:@"USD"])) {
+            //NSLog(@"ExchangeRate: %@",item.exchangeRate);
+            //NSLog(@"Name: %@",item.baseName);
+            finalItem = item;
+        }
+    }
+    
+    //NSLog(@"Final Item Name: %@",finalItem.baseName);
+    
+    return finalItem;
+}
+
+-(NSArray *) loadParameter:(NSString *)parameter{
+    
+    PFConfig *config = [PFConfig getConfig];
+    
+    config = [PFConfig currentConfig];
+    
+    NSLog(@"Getting the latest config...");
+    NSArray *message = config[parameter];
+    
+    if (!message) {
+        NSLog(@"Falling back to default message.");
+        //welcomeMessage = @"Welcome!";
+    }
+    
+    return message;
+    
 }
 
 @end
