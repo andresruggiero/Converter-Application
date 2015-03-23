@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConverterViewController : UIViewController
+@class ExchangeManager;
+
+@interface ConverterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+    ExchangeManager *exchangeManager;
+}
+
+@property (strong, nonatomic) ExchangeManager *exchangeManager;
+
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
 - (IBAction)showContainer:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *containerView;

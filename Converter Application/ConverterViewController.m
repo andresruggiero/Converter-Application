@@ -8,6 +8,8 @@
 
 #import "ConverterViewController.h"
 #import "ViewController.h"
+#import "ExchangeManager.h"
+#import "ExchangeCategory.h"
 
 @interface ConverterViewController ()
 
@@ -17,10 +19,12 @@
 
 @synthesize showButton;
 @synthesize containerView;
+@synthesize exchangeManager;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     [self.containerView setHidden:YES];
+    [self.containerView setHidden:YES];
+    exchangeManager = [ExchangeManager sharedManager];
     
     // Do any additional setup after loading the view.
 }
@@ -50,5 +54,36 @@
                         [self.containerView setAlpha:1.0];}
                     completion:nil];
 }
+
+#pragma mark - UITableViewController
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section{
+    NSArray *cat = [exchangeManager getAllCategories];
+    return [cat count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    
+    NSArray *categories = [exchangeManager getAllCategories];
+    
+    ExchangeCategory *cat = [categories objectAtIndex:[indexPath row]];
+    
+    [cell.textLabel setText:cat.exchangeCategoryName];
+    
+    return cell;
+}
+
+
 
 @end

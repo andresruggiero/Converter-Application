@@ -144,39 +144,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzo-M5-nGk">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="8" y="8" width="247" height="289"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="77" y="85" width="247" height="289"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="TpU-gi-wyL" kind="embed" id="zB8-Sv-TbE"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fR-E8-d2h">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="177" y="493" width="46" height="30"/>
+                                    <rect key="frame" x="292" y="28" width="46" height="30"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="177" y="382" width="46" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="showContainer:" destination="1rn-wg-hZa" eventType="touchUpInside" id="rGG-Aw-PcN"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzo-M5-nGk">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="42" y="83" width="316" height="319"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zbJ-0L-xf0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="34" y="424" width="221" height="301"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="TpU-gi-wyL" kind="embed" id="zB8-Sv-TbE"/>
+                                    <outlet property="dataSource" destination="1rn-wg-hZa" id="RHW-q9-Kt1"/>
+                                    <outlet property="delegate" destination="1rn-wg-hZa" id="Umn-cL-vvj"/>
                                 </connections>
-                            </containerView>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="1fR-E8-d2h"/>
                                 <exclude reference="Bzo-M5-nGk"/>
+                                <exclude reference="1fR-E8-d2h"/>
+                                <exclude reference="zbJ-0L-xf0"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="1fR-E8-d2h"/>
                                 <include reference="Bzo-M5-nGk"/>
+                                <include reference="1fR-E8-d2h"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="zbJ-0L-xf0"/>
                             </mask>
                         </variation>
                     </view>
@@ -188,12 +211,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTD-VE-Dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1258.5" y="581"/>
+            <point key="canvasLocation" x="1258.5" y="580.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Calculator Container View Controller-->
         <scene sceneID="Ljh-T5-Ykt">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="TpU-gi-wyL" customClass="ViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="TpU-gi-wyL" customClass="CalculatorContainerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iXF-um-dph"/>
                         <viewControllerLayoutGuide type="bottom" id="5SS-md-hx7"/>
@@ -201,33 +224,201 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YtA-8Y-dB8">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbw-TQ-P1v">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbw-TQ-P1v">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="316" height="48"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="48"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qc-W1-Kac">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="AC">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="187" y="65" width="50" height="108"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="PMA-a3-yEX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKm-ek-bhT">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="4">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="13" y="123" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="Dft-lz-Hw1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJx-qg-a4y">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="13" y="181" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="e7i-Pb-5qc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQp-4q-kBC">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="71" y="181" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="ntR-py-f2q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVT-sf-mhs">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="0">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="71" y="239" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="zxE-3m-3Dl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yh-nU-QTe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="3">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="129" y="181" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="Bnq-Nn-SR0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBG-78-Rif">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title=".">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="129" y="239" width="50" height="50"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsu-a2-jmf">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="7">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="13" y="65" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="y5X-LN-M41"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hju-PZ-XVF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="8">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="71" y="65" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="MUn-9I-w6f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3U-bD-W76">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="9">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="129" y="65" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="eoC-el-Rmy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="887-H4-zKu">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="5">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="71" y="123" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="JLP-YW-B7H"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ewn-Lq-jBA">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="6">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="129" y="123" width="50" height="50"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickDigit:" destination="TpU-gi-wyL" eventType="touchUpInside" id="ggo-le-XYS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="gbw-TQ-P1v"/>
+                                <exclude reference="5Qc-W1-Kac"/>
+                                <exclude reference="JKm-ek-bhT"/>
+                                <exclude reference="gJx-qg-a4y"/>
+                                <exclude reference="wQp-4q-kBC"/>
+                                <exclude reference="kVT-sf-mhs"/>
+                                <exclude reference="6yh-nU-QTe"/>
+                                <exclude reference="hBG-78-Rif"/>
+                                <exclude reference="bsu-a2-jmf"/>
+                                <exclude reference="hju-PZ-XVF"/>
+                                <exclude reference="g3U-bD-W76"/>
+                                <exclude reference="887-H4-zKu"/>
+                                <exclude reference="Ewn-Lq-jBA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="gbw-TQ-P1v"/>
+                                <include reference="5Qc-W1-Kac"/>
+                                <include reference="JKm-ek-bhT"/>
+                                <include reference="gJx-qg-a4y"/>
+                                <include reference="wQp-4q-kBC"/>
+                                <include reference="kVT-sf-mhs"/>
+                                <include reference="6yh-nU-QTe"/>
+                                <include reference="hBG-78-Rif"/>
+                                <include reference="bsu-a2-jmf"/>
+                                <include reference="hju-PZ-XVF"/>
+                                <include reference="g3U-bD-W76"/>
+                                <include reference="887-H4-zKu"/>
+                                <include reference="Ewn-Lq-jBA"/>
                             </mask>
                         </variation>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="display" destination="gbw-TQ-P1v" id="K3r-I4-1ib"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52S-5T-st8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1258.5" y="1327.5"/>
+            <point key="canvasLocation" x="1259.25" y="1124.5"/>
         </scene>
     </scenes>
 </document>

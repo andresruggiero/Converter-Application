@@ -12,10 +12,16 @@
 
 @end
 
-@implementation CalculatorContainerViewController
+@implementation CalculatorContainerViewController{
+    NSMutableString *displayString;
+    int currentNumber;
+}
+
+@synthesize display;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    displayString = [[NSMutableString alloc] init];
     // Do any additional setup after loading the view.
 }
 
@@ -33,5 +39,29 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+-(void) processDigit:(int)digit{
+    
+    currentNumber = currentNumber * 10 + digit;
+    [displayString appendString:[NSString stringWithFormat:@"%i",digit]];
+    self.display.text = displayString;
+    
+}
+
+- (IBAction)clickDigit:(id)sender {
+    
+    int digit = (int)((UIButton *)sender).tag;
+    
+    if (digit == 10) {
+        currentNumber = 0;
+        [displayString setString: @""];
+        display.text = displayString;
+    } else {
+        [self processDigit:digit];
+    }
+    
+    
+}
 
 @end

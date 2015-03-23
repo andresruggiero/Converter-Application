@@ -10,4 +10,8 @@
 
 @interface CalculatorContainerViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *display;
+- (IBAction)clickDigit:(id)sender;
+
+
 @end
