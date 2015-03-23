@@ -75,6 +75,8 @@
     NSLog(@"Item: %@ %@ %@",item.baseCurrency, item.targetCurrency, item.exchangeRate);*/
     
     // Do any additional setup after loading the view, typically from a nib.
+    
+    NSLog(@"Container View Controller");
 }
 
 - (void)didReceiveMemoryWarning {

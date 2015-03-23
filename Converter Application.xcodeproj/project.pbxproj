@@ -37,6 +37,8 @@
 		4CC60B081AB9DE4100A5B346 /* Units.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CC60B071AB9DE4100A5B346 /* Units.plist */; };
 		4CC60B0B1AB9E01900A5B346 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC60B0A1AB9E01900A5B346 /* ContentViewController.m */; };
 		4CC60B111AB9E09A00A5B346 /* CustomContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC60B101AB9E09A00A5B346 /* CustomContentCell.m */; };
+		4CCFB50F1AC0821000E00310 /* CalculatorContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCFB50E1AC0821000E00310 /* CalculatorContainerViewController.m */; };
+		4CCFB5121AC0828000E00310 /* ConverterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCFB5111AC0828000E00310 /* ConverterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,10 @@
 		4CC60B0A1AB9E01900A5B346 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		4CC60B0F1AB9E09A00A5B346 /* CustomContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomContentCell.h; sourceTree = "<group>"; };
 		4CC60B101AB9E09A00A5B346 /* CustomContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomContentCell.m; sourceTree = "<group>"; };
+		4CCFB50D1AC0821000E00310 /* CalculatorContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorContainerViewController.h; sourceTree = "<group>"; };
+		4CCFB50E1AC0821000E00310 /* CalculatorContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorContainerViewController.m; sourceTree = "<group>"; };
+		4CCFB5101AC0828000E00310 /* ConverterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConverterViewController.h; sourceTree = "<group>"; };
+		4CCFB5111AC0828000E00310 /* ConverterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +233,10 @@
 				4C0AF9AA1AB349B600BBB61F /* ViewController.m */,
 				4CC60B091AB9E01900A5B346 /* ContentViewController.h */,
 				4CC60B0A1AB9E01900A5B346 /* ContentViewController.m */,
+				4CCFB5101AC0828000E00310 /* ConverterViewController.h */,
+				4CCFB5111AC0828000E00310 /* ConverterViewController.m */,
+				4CCFB50D1AC0821000E00310 /* CalculatorContainerViewController.h */,
+				4CCFB50E1AC0821000E00310 /* CalculatorContainerViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -376,8 +386,10 @@
 				4C0AF9AB1AB349B600BBB61F /* ViewController.m in Sources */,
 				4CC60B111AB9E09A00A5B346 /* CustomContentCell.m in Sources */,
 				4C0AF9A81AB349B600BBB61F /* AppDelegate.m in Sources */,
+				4CCFB5121AC0828000E00310 /* ConverterViewController.m in Sources */,
 				4C0AF9F41AB34D6100BBB61F /* ExchangeManager.m in Sources */,
 				4C0AF9F71AB34D6100BBB61F /* Item.m in Sources */,
+				4CCFB50F1AC0821000E00310 /* CalculatorContainerViewController.m in Sources */,
 				4C0AFA031AB34F9200BBB61F /* ParseBackEndManager.m in Sources */,
 				4C0AF9FF1AB34DDC00BBB61F /* StoreCoordinator.m in Sources */,
 				4C0AF9A51AB349B600BBB61F /* main.m in Sources */,
