@@ -58,30 +58,61 @@
 #pragma mark - UITableViewController
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    int tag = (int)tableView.tag;
+    switch (tag) {
+        case 0:
+            return 1;
+            break;
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
-    NSArray *cat = [exchangeManager getAllCategories];
-    return [cat count];
+    
+    int tag = (int)tableView.tag;
+    
+    switch (tag) {
+        case 0:{
+            NSArray *cat = [exchangeManager getAllCategories];
+            return [cat count];
+            break;
+        }
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    int tag = (int)tableView.tag;
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    switch (tag) {
+        case 0:{
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+            }
+            
+            NSArray *categories = [exchangeManager getAllCategories];
+            
+            ExchangeCategory *cat = [categories objectAtIndex:[indexPath row]];
+            
+            [cell.textLabel setText:cat.exchangeCategoryName];
+            
+            return cell;
+        }
+            break;
+            
+        default:
+            return cell;
+            break;
     }
-    
-    NSArray *categories = [exchangeManager getAllCategories];
-    
-    ExchangeCategory *cat = [categories objectAtIndex:[indexPath row]];
-    
-    [cell.textLabel setText:cat.exchangeCategoryName];
-    
-    return cell;
+
 }
 
 
