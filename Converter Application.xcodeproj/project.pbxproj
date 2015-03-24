@@ -39,6 +39,9 @@
 		4CC60B111AB9E09A00A5B346 /* CustomContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC60B101AB9E09A00A5B346 /* CustomContentCell.m */; };
 		4CCFB50F1AC0821000E00310 /* CalculatorContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCFB50E1AC0821000E00310 /* CalculatorContainerViewController.m */; };
 		4CCFB5121AC0828000E00310 /* ConverterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCFB5111AC0828000E00310 /* ConverterViewController.m */; };
+		4CD23C2A1AC0A6F000A9269E /* Length-50 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD23C271AC0A6F000A9269E /* Length-50 (1).png */; };
+		4CD23C2B1AC0A6F000A9269E /* money_bag-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD23C281AC0A6F000A9269E /* money_bag-50.png */; };
+		4CD23C2C1AC0A6F000A9269E /* Volume-50 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD23C291AC0A6F000A9269E /* Volume-50 (1).png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +104,9 @@
 		4CCFB50E1AC0821000E00310 /* CalculatorContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorContainerViewController.m; sourceTree = "<group>"; };
 		4CCFB5101AC0828000E00310 /* ConverterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConverterViewController.h; sourceTree = "<group>"; };
 		4CCFB5111AC0828000E00310 /* ConverterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConverterViewController.m; sourceTree = "<group>"; };
+		4CD23C271AC0A6F000A9269E /* Length-50 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Length-50 (1).png"; sourceTree = "<group>"; };
+		4CD23C281AC0A6F000A9269E /* money_bag-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "money_bag-50.png"; sourceTree = "<group>"; };
+		4CD23C291AC0A6F000A9269E /* Volume-50 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Volume-50 (1).png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,9 @@
 		4C0AF9961AB349B600BBB61F = {
 			isa = PBXGroup;
 			children = (
+				4CD23C271AC0A6F000A9269E /* Length-50 (1).png */,
+				4CD23C281AC0A6F000A9269E /* money_bag-50.png */,
+				4CD23C291AC0A6F000A9269E /* Volume-50 (1).png */,
 				4C0AF9A11AB349B600BBB61F /* Converter Application */,
 				4C0AF9BB1AB349B600BBB61F /* Converter ApplicationTests */,
 				4C0AF9A01AB349B600BBB61F /* Products */,
@@ -361,8 +370,11 @@
 			files = (
 				4CC60B081AB9DE4100A5B346 /* Units.plist in Resources */,
 				4C0AF9AE1AB349B600BBB61F /* Main.storyboard in Resources */,
+				4CD23C2B1AC0A6F000A9269E /* money_bag-50.png in Resources */,
 				4C0AF9B31AB349B600BBB61F /* LaunchScreen.xib in Resources */,
+				4CD23C2C1AC0A6F000A9269E /* Volume-50 (1).png in Resources */,
 				4C0AF9B01AB349B600BBB61F /* Images.xcassets in Resources */,
+				4CD23C2A1AC0A6F000A9269E /* Length-50 (1).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

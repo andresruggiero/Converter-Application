@@ -17,11 +17,12 @@
                     <connections>
                         <segue destination="yWy-mB-qwW" kind="relationship" relationship="viewControllers" id="PSW-gp-8Qh"/>
                         <segue destination="1rn-wg-hZa" kind="relationship" relationship="viewControllers" id="DBf-9c-9Ga"/>
+                        <segue destination="hgz-iP-caP" kind="relationship" relationship="viewControllers" id="o3m-CL-FBL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doG-FP-s8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="426" y="257"/>
+            <point key="canvasLocation" x="-786" y="268.5"/>
         </scene>
         <!--Information-->
         <scene sceneID="94C-1V-9xO">
@@ -130,7 +131,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CgM-PS-5oL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1258.5" y="-79"/>
+            <point key="canvasLocation" x="-7.5" y="-163.5"/>
         </scene>
         <!--Converter-->
         <scene sceneID="HJb-Ag-AFr">
@@ -150,7 +151,7 @@
                                     <rect key="frame" x="8" y="8" width="247" height="289"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="77" y="85" width="247" height="289"/>
+                                    <rect key="frame" x="77" y="44" width="247" height="289"/>
                                 </variation>
                                 <connections>
                                     <segue destination="TpU-gi-wyL" kind="embed" id="zB8-Sv-TbE"/>
@@ -165,7 +166,7 @@
                                     <rect key="frame" x="292" y="28" width="46" height="30"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="177" y="382" width="46" height="30"/>
+                                    <rect key="frame" x="177" y="349" width="46" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="showContainer:" destination="1rn-wg-hZa" eventType="touchUpInside" id="rGG-Aw-PcN"/>
@@ -175,11 +176,33 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="34" y="424" width="221" height="301"/>
+                                    <rect key="frame" x="24" y="393" width="96" height="301"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="1rn-wg-hZa" id="RHW-q9-Kt1"/>
                                     <outlet property="delegate" destination="1rn-wg-hZa" id="Umn-cL-vvj"/>
+                                </connections>
+                            </tableView>
+                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="L05-he-9NH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="128" y="393" width="119" height="301"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="1rn-wg-hZa" id="ZNc-9L-dm6"/>
+                                    <outlet property="delegate" destination="1rn-wg-hZa" id="nhv-66-t2E"/>
+                                </connections>
+                            </tableView>
+                            <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CGL-Vz-LVa">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="255" y="393" width="122" height="301"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="1rn-wg-hZa" id="L92-qV-vxb"/>
+                                    <outlet property="delegate" destination="1rn-wg-hZa" id="dgJ-fF-P3y"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -189,6 +212,8 @@
                                 <exclude reference="Bzo-M5-nGk"/>
                                 <exclude reference="1fR-E8-d2h"/>
                                 <exclude reference="zbJ-0L-xf0"/>
+                                <exclude reference="L05-he-9NH"/>
+                                <exclude reference="CGL-Vz-LVa"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -200,18 +225,41 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="zbJ-0L-xf0"/>
+                                <include reference="L05-he-9NH"/>
+                                <include reference="CGL-Vz-LVa"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Converter" id="UpD-7v-9KB"/>
                     <connections>
+                        <outlet property="baseCurrencyTableView" destination="L05-he-9NH" id="W7S-xh-Yqb"/>
+                        <outlet property="categoriesTableView" destination="zbJ-0L-xf0" id="4YH-AZ-i0p"/>
                         <outlet property="containerView" destination="Bzo-M5-nGk" id="iiP-wG-4Um"/>
                         <outlet property="showButton" destination="1fR-E8-d2h" id="GIX-Ep-ywE"/>
+                        <outlet property="targetCurrencyTableView" destination="CGL-Vz-LVa" id="h1G-vO-gRJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTD-VE-Dnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1258.5" y="580.5"/>
+            <point key="canvasLocation" x="676.5" y="268.5"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="AJZ-T4-6tZ">
+            <objects>
+                <viewController id="hgz-iP-caP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="irD-Wb-o55"/>
+                        <viewControllerLayoutGuide type="bottom" id="vtn-kp-oPt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dlu-v7-0RE">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="d3V-pJ-lpn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JFK-dx-FFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7.5" y="698.25"/>
         </scene>
         <!--Calculator Container View Controller-->
         <scene sceneID="Ljh-T5-Ykt">
@@ -222,6 +270,7 @@
                         <viewControllerLayoutGuide type="bottom" id="5SS-md-hx7"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YtA-8Y-dB8">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbw-TQ-P1v">
@@ -418,7 +467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52S-5T-st8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1259.25" y="1124.5"/>
+            <point key="canvasLocation" x="677.25" y="781.125"/>
         </scene>
     </scenes>
 </document>

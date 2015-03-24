@@ -37,7 +37,7 @@
         //NSMutableDictionary *myDic = [self loadPListWithName:category];
     for (NSString *categoryName in myDic) {
         //NSLog(@"%@",categoryName);
-        ExchangeCategory *exchangeCategory = [[ExchangeCategory alloc] initWithName:categoryName];
+        ExchangeCategory *exchangeCategory = [[ExchangeCategory alloc] initWithName:categoryName andIcon:nil];
         NSMutableDictionary *categoryDictionary = [[NSMutableDictionary alloc] initWithDictionary:[myDic objectForKey:categoryName]];
         for (NSString *code in categoryDictionary) {
             NSMutableDictionary *myDic2 = [[NSMutableDictionary alloc] initWithDictionary:[categoryDictionary objectForKey:code]];
@@ -55,7 +55,7 @@
                 //item.exchangeRate = [myDic2 objectForKey:secondCode];
                 [self.categories addObject:item];
             }
-            CurrencyCollection *currencyCollection = [[CurrencyCollection alloc] initWithName:categoryName andArrayOfItems:self.categories];
+            CurrencyCollection *currencyCollection = [[CurrencyCollection alloc] initWithName:code andArrayOfItems:self.categories];
             [exchangeCategory addCurrencyCollection:currencyCollection];
         }
         [self.exchangeCategoriesArray addObject:exchangeCategory];

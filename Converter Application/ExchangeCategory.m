@@ -13,11 +13,13 @@
 
 @synthesize exchangeCategoryName;
 @synthesize currencyCollectionArray;
+@synthesize exchangeCategoryIcon;
 
--(id) initWithName:(NSString *) name{
+-(id) initWithName:(NSString *) name andIcon:(UIImage *)image{
     self = [super init];
     if (self) {
         self.exchangeCategoryName = name;
+        self.exchangeCategoryIcon = image;
         self.currencyCollectionArray = [[NSMutableArray alloc] init];
     }
     return  self;
@@ -26,7 +28,5 @@
 -(void) addCurrencyCollection:(CurrencyCollection *)collection{
     [self.currencyCollectionArray addObject:collection];
 }
-
-
 
 @end

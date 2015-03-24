@@ -34,7 +34,8 @@
     //NSLog(@"Messsage = %@", message);
     
     // Creating Currency exchangeCategory
-    ExchangeCategory *exchangeCategory = [[ExchangeCategory alloc] initWithName:@"Currency"];
+    ExchangeCategory *exchangeCategory = [[ExchangeCategory alloc] initWithName:@"Currency" andIcon:nil];
+    [exchangeCategory setExchangeCategoryIcon:[UIImage imageNamed:@"money_bag-50.png"]];
     
     NSMutableArray *arrayOfExchangeCategory = [[NSMutableArray alloc] init];
     

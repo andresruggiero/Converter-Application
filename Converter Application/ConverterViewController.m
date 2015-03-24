@@ -10,6 +10,11 @@
 #import "ViewController.h"
 #import "ExchangeManager.h"
 #import "ExchangeCategory.h"
+#import "CurrencyCollection.h"
+
+#define CATEGORY_TABLE 0
+#define BASE_CURRENCY_TABLE 1
+#define TARGET_CURRENCY_TABLE 2
 
 @interface ConverterViewController ()
 
@@ -20,6 +25,7 @@
 @synthesize showButton;
 @synthesize containerView;
 @synthesize exchangeManager;
+@synthesize categoriesTableView, baseCurrencyTableView, targetCurrencyTableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,14 +61,30 @@
                     completion:nil];
 }
 
+- (NSIndexPath *)currentSelectedIndexForTableView:(UITableView *)table
+{
+    NSIndexPath *selectedIndexPath = [table indexPathForSelectedRow];
+    if (selectedIndexPath) {
+        return selectedIndexPath;
+    }
+    else {
+        return nil;
+    }
+}
+
 #pragma mark - UITableViewController
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     int tag = (int)tableView.tag;
     switch (tag) {
-        case 0:
+        case CATEGORY_TABLE:
             return 1;
             break;
+        case BASE_CURRENCY_TABLE:
+            return 1;
+            break;
+        case TARGET_CURRENCY_TABLE:
+            return 1;
         default:
             return 0;
             break;
@@ -75,25 +97,43 @@
     int tag = (int)tableView.tag;
     
     switch (tag) {
-        case 0:{
+        case CATEGORY_TABLE:{
             NSArray *cat = [exchangeManager getAllCategories];
             return [cat count];
+            break;
+        }
+        case BASE_CURRENCY_TABLE:{
+            
+            NSIndexPath *path = [self currentSelectedIndexForTableView:self.categoriesTableView];
+            //if (path != nil) {
+                UITableViewCell *cell  = [self.categoriesTableView cellForRowAtIndexPath:path];
+                NSLog(@"text: %@",cell.textLabel.text);
+           // }
+            
+            NSArray *currencyCollections = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:cell.textLabel.text];
+            
+            NSLog(@"%lu",(unsigned long)[currencyCollections count]);
+            
+            return [currencyCollections count];
+            //return 0;
+            
             break;
         }
         default:
             return 0;
             break;
     }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     int tag = (int)tableView.tag;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
     switch (tag) {
-        case 0:{
+        case CATEGORY_TABLE:{
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
             }
@@ -103,18 +143,61 @@
             ExchangeCategory *cat = [categories objectAtIndex:[indexPath row]];
             
             [cell.textLabel setText:cat.exchangeCategoryName];
+            //[cell.imageView setImage:cat.exchangeCategoryIcon];
             
             return cell;
+            break;
         }
+        case BASE_CURRENCY_TABLE:{
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+            
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+            }
+            
+            NSIndexPath *path = [self currentSelectedIndexForTableView:self.categoriesTableView];
+            //if (path != nil) {
+            UITableViewCell *cell2  = [self.categoriesTableView cellForRowAtIndexPath:path];
+            //NSLog(@"text: %@",cell.textLabel.text);
+            // }
+            
+            NSArray *currencyCollections = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:cell2.textLabel.text];
+            
+            CurrencyCollection *collection = [currencyCollections objectAtIndex:[indexPath row]];
+            
+            NSLog(@"Name: %@",collection.currencyCollectionName);
+            
+            //NSLog(@"Number: %lu",(unsigned long)[currencyCollections count]);
+         
+            [cell.textLabel setText:collection.currencyCollectionName];
+            
+            return cell;
+            
             break;
             
+        }
         default:
-            return cell;
+            return nil;
             break;
     }
 
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    int tag = (int)tableView.tag;
+    
+    switch (tag) {
+        case CATEGORY_TABLE:{
+            [self.baseCurrencyTableView reloadData];
+            NSLog(@"Reloading Data");
 
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 @end

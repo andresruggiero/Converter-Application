@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class CurrencyCollection;
 
@@ -15,8 +16,9 @@
 // Array of Currency Collection objects
 @property NSMutableArray *currencyCollectionArray;
 @property (strong, nonatomic) NSString *exchangeCategoryName;
+@property (strong, nonatomic) UIImage *exchangeCategoryIcon;
 
--(id) initWithName:(NSString *) name;
+-(id) initWithName:(NSString *) name andIcon:(UIImage *)image;
 -(void) addCurrencyCollection:(CurrencyCollection *)collection;
 
 @end
