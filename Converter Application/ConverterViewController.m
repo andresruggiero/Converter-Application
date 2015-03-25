@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "ExchangeManager.h"
 #import "ExchangeCategory.h"
+#import "Item.h"
 #import "CurrencyCollection.h"
 
 #define CATEGORY_TABLE 0
@@ -72,6 +73,17 @@
     }
 }
 
+-(NSString *) getSelectedExchangeCategoryName{
+    
+    NSIndexPath *path = [self currentSelectedIndexForTableView:self.categoriesTableView];
+    //if (path != nil) {
+    UITableViewCell *cell  = [self.categoriesTableView cellForRowAtIndexPath:path];
+    //NSLog(@"text: %@",cell.textLabel.text);
+    
+    return cell.textLabel.text;
+}
+
+
 #pragma mark - UITableViewController
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -104,19 +116,32 @@
         }
         case BASE_CURRENCY_TABLE:{
             
-            NSIndexPath *path = [self currentSelectedIndexForTableView:self.categoriesTableView];
-            //if (path != nil) {
-                UITableViewCell *cell  = [self.categoriesTableView cellForRowAtIndexPath:path];
-                NSLog(@"text: %@",cell.textLabel.text);
-           // }
+            NSString *categoryName = [self getSelectedExchangeCategoryName];
             
-            NSArray *currencyCollections = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:cell.textLabel.text];
+            NSArray *currencyCollections = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:categoryName];
             
-            NSLog(@"%lu",(unsigned long)[currencyCollections count]);
+            //NSLog(@"%lu",(unsigned long)[currencyCollections count]);
             
             return [currencyCollections count];
             //return 0;
             
+            break;
+        }
+        case TARGET_CURRENCY_TABLE:{
+            
+            NSString *categoryName = [self getSelectedExchangeCategoryName];
+            
+            NSIndexPath *path = [self currentSelectedIndexForTableView:self.baseCurrencyTableView];
+            UITableViewCell *cell  = [self.baseCurrencyTableView cellForRowAtIndexPath:path];
+            //NSLog(@"text: %@",cell.textLabel.text);
+            
+            NSString *string = cell.textLabel.text;
+            
+            NSArray *ar = [exchangeManager getItemsFromCurrencyCollectionWithName:string andExchangeCategoryName:categoryName];
+            
+            NSLog(@"Category: %@ # elements: %lu",categoryName,(unsigned long)[ar count]);
+            
+            return [ar count];
             break;
         }
         default:
@@ -133,9 +158,11 @@
     switch (tag) {
         case CATEGORY_TABLE:{
             
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+            //NSString *categoryName = [self getSelectedExchangeCategoryName];
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Category Cell"];
             if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Category Cell"];
             }
             
             NSArray *categories = [exchangeManager getAllCategories];
@@ -150,23 +177,19 @@
         }
         case BASE_CURRENCY_TABLE:{
             
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+            NSString *categoryName = [self getSelectedExchangeCategoryName];
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Base Cell"];
             
             if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Base Cell"];
             }
             
-            NSIndexPath *path = [self currentSelectedIndexForTableView:self.categoriesTableView];
-            //if (path != nil) {
-            UITableViewCell *cell2  = [self.categoriesTableView cellForRowAtIndexPath:path];
-            //NSLog(@"text: %@",cell.textLabel.text);
-            // }
-            
-            NSArray *currencyCollections = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:cell2.textLabel.text];
+            NSArray *currencyCollections = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:categoryName];
             
             CurrencyCollection *collection = [currencyCollections objectAtIndex:[indexPath row]];
             
-            NSLog(@"Name: %@",collection.currencyCollectionName);
+            //NSLog(@"Name: %@",collection.currencyCollectionName);
             
             //NSLog(@"Number: %lu",(unsigned long)[currencyCollections count]);
          
@@ -176,6 +199,32 @@
             
             break;
             
+        }
+        case TARGET_CURRENCY_TABLE:{
+            
+            NSString *categoryName = [self getSelectedExchangeCategoryName];
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Target Cell"];
+            
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Target Cell"];
+            }
+            
+            NSIndexPath *path = [self currentSelectedIndexForTableView:self.baseCurrencyTableView];
+            UITableViewCell *cell2  = [self.baseCurrencyTableView cellForRowAtIndexPath:path];
+            //NSLog(@"text: %@",cell2.textLabel.text);
+            
+            NSString *string = cell2.textLabel.text;
+            
+            NSArray *ar = [exchangeManager getItemsFromCurrencyCollectionWithName:string andExchangeCategoryName:categoryName];
+            
+            Item *item = [ar objectAtIndex:[indexPath row]];
+            
+            [cell.textLabel setText:item.targetCurrency];
+            
+            return cell;
+            
+            break;
         }
         default:
             return nil;
@@ -193,6 +242,23 @@
             [self.baseCurrencyTableView reloadData];
             NSLog(@"Reloading Data");
 
+            break;
+        }
+        case BASE_CURRENCY_TABLE:{
+            /*NSIndexPath *path = [self currentSelectedIndexForTableView:self.baseCurrencyTableView];
+            UITableViewCell *cell2  = [self.baseCurrencyTableView cellForRowAtIndexPath:path];
+            NSLog(@"text: %@",cell2.textLabel.text);
+            
+            NSString *string = cell2.textLabel.text;
+            
+            NSArray *ar = [exchangeManager getItemsFromCurrencyCollectionWithName:string];
+            
+            for (Item *item in ar) {
+                NSLog(@"%@",item.targetCurrency);
+            }*/
+            
+            [self.targetCurrencyTableView reloadData];
+            
             break;
         }
         default:

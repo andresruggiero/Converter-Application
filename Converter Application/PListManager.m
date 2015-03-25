@@ -16,6 +16,7 @@
 
 @synthesize categories;
 @synthesize exchangeCategoriesArray;
+@synthesize itemArray;
 
 - (instancetype)init
 {
@@ -23,6 +24,7 @@
     if (self) {
         self.categories = [[NSMutableArray alloc] init];
         self.exchangeCategoriesArray = [[NSMutableArray alloc] init];
+        self.itemArray = [[NSMutableArray alloc] init];
         [self startPListLoading];
     }
     
@@ -37,11 +39,20 @@
         //NSMutableDictionary *myDic = [self loadPListWithName:category];
     for (NSString *categoryName in myDic) {
         //NSLog(@"%@",categoryName);
+        
         ExchangeCategory *exchangeCategory = [[ExchangeCategory alloc] initWithName:categoryName andIcon:nil];
+        
+        //NSMutableArray *arrayOfExchangeCategory = [[NSMutableArray alloc] init];
+        
+        NSMutableArray *arrayOfCurrencyCollection = [[NSMutableArray alloc] init];
+        
         NSMutableDictionary *categoryDictionary = [[NSMutableDictionary alloc] initWithDictionary:[myDic objectForKey:categoryName]];
         for (NSString *code in categoryDictionary) {
             NSMutableDictionary *myDic2 = [[NSMutableDictionary alloc] initWithDictionary:[categoryDictionary objectForKey:code]];
             //NSLog(@"Code %@:",code);
+            
+            NSMutableArray *arrayOfItems = [[NSMutableArray alloc] init];
+            
             for (NSString *secondCode in myDic2) {
                 //NSLog(@"From: %@ to: %@ rate: %@",code,secondCode,[myDic2 objectForKey:secondCode]);
                 Item *item = [[Item alloc] init];
@@ -53,12 +64,20 @@
                 //item.fromCurrency = code;
                 //item.toCurrency = secondCode;
                 //item.exchangeRate = [myDic2 objectForKey:secondCode];
-                [self.categories addObject:item];
+                
+                [arrayOfItems addObject:item];
             }
-            CurrencyCollection *currencyCollection = [[CurrencyCollection alloc] initWithName:code andArrayOfItems:self.categories];
-            [exchangeCategory addCurrencyCollection:currencyCollection];
+            
+            CurrencyCollection *currencyCollection = [[CurrencyCollection alloc] initWithName:code andArrayOfItems:arrayOfItems];
+            
+            [arrayOfCurrencyCollection addObject:currencyCollection];
+            
         }
+        
+        [exchangeCategory setCurrencyCollectionArray:arrayOfCurrencyCollection];
+        
         [self.exchangeCategoriesArray addObject:exchangeCategory];
+        
     }
     //}
     

@@ -38,7 +38,6 @@
         lengthCodeArray = [[NSArray alloc] initWithObjects:@"mm",@"cm",@"m",@"in",@"ft", nil];
         
         //[self saveDataFromXml];
-#warning Data load from plist incomplete
         [self saveDataFromPLists];
     }
     return self;
@@ -71,10 +70,10 @@
     
     self.pListManager = [[PListManager alloc] init];
     NSMutableArray *categoriesArray = [[NSMutableArray alloc]initWithArray:[self.pListManager getAllCategories]];
-    //NSLog(@"%@",categoriesArray);
+    //NSLog(@"categoriesArray:%@",categoriesArray);
     
     for (ExchangeCategory *category in categoriesArray) {
-        //NSLog(@"%@",category.exchangeCategoryName);
+        //NSLog(@"Category Name:%@",category.exchangeCategoryName);
         [exchangeManager addExchangeCategory:category];
     }
     

@@ -64,17 +64,19 @@
 -(NSArray *) getAllCurrencyCollectionsFromCategoryWithName:(NSString *)categoryName{
     
     NSArray *currencyCollectionArray;
+    
     for (ExchangeCategory *category in self.categoryArray) {
         if ([category.exchangeCategoryName isEqualToString:categoryName]) {
+            //NSLog(@"%@ %@",category.exchangeCategoryName, categoryName);
             currencyCollectionArray = category.currencyCollectionArray;
         }
     }
     return currencyCollectionArray;
 }
 
--(CurrencyCollection *) getCurrencyCollectionWithName:(NSString *)name{
+-(CurrencyCollection *) getCurrencyCollectionWithName:(NSString *)name andExchangeCategoryName:(NSString *)categoryName{
     
-    NSArray *currencyCollections = [self getAllCurrencyCollectionsFromCategoryWithName:@"Currency"];
+    NSArray *currencyCollections = [self getAllCurrencyCollectionsFromCategoryWithName:categoryName];
     CurrencyCollection *result = nil;
     
     for (CurrencyCollection *collection in currencyCollections) {
@@ -87,13 +89,30 @@
     return result;
 }
 
--(NSMutableArray *)getCurrencyCollectionsWithNames:(NSArray *)names{
+-(CurrencyCollection *) getCurrencyCollectionWithName:(NSString *)name andExchangeCategoryWithName:(NSString *)categoryName{
+    
+    NSArray *currencyCollections = [self getAllCurrencyCollectionsFromCategoryWithName:categoryName];
+    CurrencyCollection *result = nil;
+    
+    for (CurrencyCollection *collection in currencyCollections) {
+        if ([collection.currencyCollectionName isEqualToString:name]) {
+            NSLog(@"Testing: %@",collection.currencyCollectionName);
+            result = collection;
+        }
+    }
+    
+    return result;
+}
+
+-(NSMutableArray *)getCurrencyCollectionsWithNames:(NSArray *)names andExchangeCategoryName:(NSString *)categoryName{
     
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
     for (NSString *object in names) {
         if (![object isEqualToString:@"USD"]) {
-            CurrencyCollection *collection = [self getCurrencyCollectionWithName:object];
+            CurrencyCollection *collection = [self getCurrencyCollectionWithName:object andExchangeCategoryName:categoryName];
+            //CurrencyCollection *collection = []
+            
             if (collection != nil) {
                 [result addObject:collection];
             } else {
@@ -103,6 +122,18 @@
     }
     
     return result;
+}
+
+-(NSArray *) getItemsFromCurrencyCollectionWithName:(NSString *)name andExchangeCategoryName:(NSString *)categoryName{
+    
+    //CurrencyCollection *coll = [self getCurrencyCollectionWithName:name];
+    
+    CurrencyCollection *coll = [self getCurrencyCollectionWithName:name andExchangeCategoryWithName:categoryName];
+    
+    NSLog(@"Cat: %@",categoryName);
+    NSLog(@"%lu",(unsigned long)[coll.itemsArray count]);
+    
+    return coll.itemsArray;
 }
 
 -(Item *)getItemFromCurrencyCollection:(CurrencyCollection *)collection fromBaseCurrency:(NSString *)baseCurrency toTargetCurrency:(NSString *)targetCurrency{

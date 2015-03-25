@@ -27,9 +27,10 @@
 -(NSArray *) getAllCategories;
 -(NSArray *) getAllCurrencyCollectionsFromCategoryWithName:(NSString *)categoryName;
 -(ExchangeCategory *) getExchangeCategoryWithName:(NSString *)name;
--(CurrencyCollection *) getCurrencyCollectionWithName:(NSString *)name;
--(NSMutableArray *)getCurrencyCollectionsWithNames:(NSArray *)names;
+-(CurrencyCollection *) getCurrencyCollectionWithName:(NSString *)name andExchangeCategoryName:(NSString *)categoryName;
+-(NSMutableArray *)getCurrencyCollectionsWithNames:(NSArray *)names andExchangeCategoryName:(NSString *)categoryName;
 -(Item *)getItemFromCurrencyCollection:(CurrencyCollection *)collection fromBaseCurrency:(NSString *)baseCurrency toTargetCurrency:(NSString *)targetCurrency;
+-(NSArray *) getItemsFromCurrencyCollectionWithName:(NSString *)name andExchangeCategoryName:(NSString *)categoryName;
 
 -(NSArray *) loadParameter:(NSString *)parameter;
 

@@ -28,6 +28,17 @@
     
     exchangeManager = [ExchangeManager sharedManager];
     
+    /*NSArray *arr = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:@"Volume"];
+    
+    for (CurrencyCollection *coll in arr) {
+        
+        NSLog(@"%@",coll.currencyCollectionName);
+        NSArray *itemArray = coll.itemsArray;
+        for (Item *item in itemArray) {
+            NSLog(@"base: %@ target: %@",item.baseCurrency, item.targetCurrency);
+        }
+    }*/
+    
     // Loading currencyArray config from Parse BaaS
     message = [[NSArray alloc] initWithArray:[exchangeManager loadParameter:@"currencyArray"]];
     
@@ -54,7 +65,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Return the number of rows in the section.
-    NSMutableArray *array = [exchangeManager getCurrencyCollectionsWithNames:message];
+    NSMutableArray *array = [exchangeManager getCurrencyCollectionsWithNames:message andExchangeCategoryName:@"Currency"];
     return [array count];
 }
 
@@ -67,7 +78,7 @@
         cell = [[CustomContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Custom Cell"];
     }
     
-    NSMutableArray *array = [exchangeManager getCurrencyCollectionsWithNames:message];
+    NSMutableArray *array = [exchangeManager getCurrencyCollectionsWithNames:message andExchangeCategoryName:@"Currency"];
     
     CurrencyCollection *collection = [array objectAtIndex:[indexPath row]];
     

@@ -12,6 +12,7 @@
 
 @interface PListManager : NSObject
 
+@property (strong, nonatomic) NSMutableArray *itemArray;
 @property (strong, nonatomic) NSMutableArray *categories;
 @property (strong,nonatomic) NSMutableArray *exchangeCategoriesArray;
 
