@@ -7,8 +7,12 @@
 //
 
 #import "CustomContentCell.h"
+#import "StyleKitName.h"
 
 @implementation CustomContentCell
+@synthesize baseCurrencyLabel;
+@synthesize baseNameLabel;
+@synthesize exchangeRateLabel;
 
 - (void)awakeFromNib {
     // Initialization code
@@ -18,6 +22,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void) drawRect:(CGRect)rect{
+    
+    [StyleKitName drawCanvas1WithBaseCurrencyName:self.baseNameLabel
+                                     baseCurrency:self.baseCurrencyLabel
+                                     exchangeRate:self.exchangeRateLabel];
+    
+    
 }
 
 @end

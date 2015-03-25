@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomContentCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *baseNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *baseCurrencyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *exchangeRateLabel;
+@property (weak, nonatomic)  NSString *baseNameLabel;
+@property (weak, nonatomic)  NSString *baseCurrencyLabel;
+@property (weak, nonatomic)  NSString *exchangeRateLabel;
 
 @end

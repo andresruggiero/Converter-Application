@@ -54,7 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableView Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -82,14 +82,18 @@
     
     CurrencyCollection *collection = [array objectAtIndex:[indexPath row]];
     
-    [cell.baseCurrencyLabel setText:collection.currencyCollectionName];
+    [cell setBaseCurrencyLabel:collection.currencyCollectionName];
+    
+    //[cell.baseCurrencyLabel setText:collection.currencyCollectionName];
     
     Item *item = [exchangeManager getItemFromCurrencyCollection:collection fromBaseCurrency:collection.currencyCollectionName toTargetCurrency:@"USD"];
     
     if (item != nil) {
-        [cell.exchangeRateLabel setText:item.exchangeRate];
+        [cell setExchangeRateLabel:item.exchangeRate];
+        //[cell.exchangeRateLabel setText:item.exchangeRate];
         
-        [cell.baseNameLabel setText:item.baseName];
+        [cell setBaseNameLabel:item.baseName];
+        //[cell.baseNameLabel setText:item.baseName];
     } else {
         NSLog(@"Error: Item nil");
     }

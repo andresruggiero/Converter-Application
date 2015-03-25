@@ -130,8 +130,8 @@
     
     CurrencyCollection *coll = [self getCurrencyCollectionWithName:name andExchangeCategoryWithName:categoryName];
     
-    NSLog(@"Cat: %@",categoryName);
-    NSLog(@"%lu",(unsigned long)[coll.itemsArray count]);
+    //NSLog(@"Cat: %@",categoryName);
+    //NSLog(@"%lu",(unsigned long)[coll.itemsArray count]);
     
     return coll.itemsArray;
 }
