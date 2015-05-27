@@ -7,6 +7,7 @@
 //
 
 #import "CalculatorContainerViewController.h"
+#import "StyleKitName.h"
 
 @interface CalculatorContainerViewController ()
 
@@ -22,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     displayString = [[NSMutableString alloc] init];
+    [self.view setBackgroundColor:[StyleKitName redBaseColor]];
+    
     // Do any additional setup after loading the view.
 }
 

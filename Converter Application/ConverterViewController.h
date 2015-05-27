@@ -17,8 +17,11 @@
 @property (strong, nonatomic) ExchangeManager *exchangeManager;
 
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
+
 - (IBAction)showContainer:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+
 @property (weak, nonatomic) IBOutlet UITableView *categoriesTableView;
 @property (weak, nonatomic) IBOutlet UITableView *baseCurrencyTableView;
 @property (weak, nonatomic) IBOutlet UITableView *targetCurrencyTableView;

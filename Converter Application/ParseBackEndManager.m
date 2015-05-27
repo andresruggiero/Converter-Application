@@ -35,7 +35,7 @@
     
     // Creating Currency exchangeCategory
     ExchangeCategory *exchangeCategory = [[ExchangeCategory alloc] initWithName:@"Currency" andIcon:nil];
-    [exchangeCategory setExchangeCategoryIcon:[UIImage imageNamed:@"money_bag-50.png"]];
+    //[exchangeCategory setExchangeCategoryIcon:[UIImage imageNamed:@"Money_Bag-100.png"]];
     
     NSMutableArray *arrayOfExchangeCategory = [[NSMutableArray alloc] init];
     
@@ -79,6 +79,10 @@
     
 }
 
+-(IBAction)callback:(id)sender{
+    
+}
+
 -(NSArray *) objectsWithClassName:(NSString *)className whereKey:(NSString *)key equalTo:(NSString *)string{
     
     PFQuery *allItems = [PFQuery queryWithClassName:className];
@@ -88,6 +92,7 @@
     allItems.limit = 200;
     
     NSArray *objects = [[NSArray alloc] initWithArray:[allItems findObjects]];
+
     
     /*[allItems findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error) {

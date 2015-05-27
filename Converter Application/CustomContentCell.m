@@ -9,6 +9,12 @@
 #import "CustomContentCell.h"
 #import "StyleKitName.h"
 
+@interface CustomContentCell()
+
+@property BOOL isPressed;
+
+@end
+
 @implementation CustomContentCell
 @synthesize baseCurrencyLabel;
 @synthesize baseNameLabel;
@@ -24,13 +30,29 @@
     // Configure the view for the selected state
 }
 
+// Overriden setHighlited method to integrate StyleKitName class
+-(void) setHighlighted:(BOOL)highlighted{
+    
+    if (highlighted) {
+        self.isPressed = YES;
+        [self setNeedsDisplay];
+        NSLog(@"Is Pressed");
+    } else {
+        self.isPressed = NO;
+        [self setNeedsDisplay];
+        NSLog(@"Is not Pressed");
+    }
+    
+}
+
 -(void) drawRect:(CGRect)rect{
     
-    [StyleKitName drawCanvas1WithBaseCurrencyName:self.baseNameLabel
-                                     baseCurrency:self.baseCurrencyLabel
-                                     exchangeRate:self.exchangeRateLabel];
-    
-    
+    [StyleKitName drawContentCellWithFrame:rect
+                          baseCurrencyName:self.baseNameLabel
+                              baseCurrency:self.baseCurrencyLabel
+                              exchangeRate:self.exchangeRateLabel
+                                 isPressed:self.isPressed];
+
 }
 
 @end

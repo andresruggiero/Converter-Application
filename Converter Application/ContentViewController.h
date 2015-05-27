@@ -13,6 +13,7 @@
 @interface ContentViewController : UITableViewController{
     ExchangeManager *exchangeManager;
 }
+@property (strong, nonatomic) IBOutlet UITableView *contentTableView;
 
 @property (strong, nonatomic) ExchangeManager *exchangeManager;
 

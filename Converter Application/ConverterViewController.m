@@ -12,6 +12,8 @@
 #import "ExchangeCategory.h"
 #import "Item.h"
 #import "CurrencyCollection.h"
+#import "StyleKitName.h"
+#import "CustomCategoriesTableViewCell.h"
 
 #define CATEGORY_TABLE 0
 #define BASE_CURRENCY_TABLE 1
@@ -36,11 +38,20 @@
     
     [super viewDidLoad];
     [self.containerView setHidden:YES];
+    [self.view setBackgroundColor:[StyleKitName redBaseColor]];
     
     selectedExchangeCategoryName = [[NSString alloc] init];
     selectedBaseCurrencyName = [[NSString alloc] init];
     
     exchangeManager = [ExchangeManager sharedManager];
+    
+    [self.categoriesTableView setBackgroundColor:[StyleKitName redBaseColor]];
+    [self.baseCurrencyTableView setBackgroundColor:[StyleKitName redBaseColor]];
+    [self.targetCurrencyTableView setBackgroundColor:[StyleKitName redBaseColor]];
+    
+    /*[self.categoriesTableView setBackgroundColor:[StyleKitName baseColor]];
+    [self.baseCurrencyTableView setBackgroundColor:[StyleKitName baseColor]];
+    [self.targetCurrencyTableView setBackgroundColor:[StyleKitName baseColor]];*/
     
     // Do any additional setup after loading the view.
 }
@@ -78,10 +89,33 @@
     //NSIndexPath *path = [self currentSelectedIndexForTableView:self.categoriesTableView];
     NSIndexPath *selectedIndexPath = [table indexPathForSelectedRow];
     //if (path != nil) {
-    UITableViewCell *cell  = [table cellForRowAtIndexPath:selectedIndexPath];
+    //UITableViewCell *cell  = [table cellForRowAtIndexPath:selectedIndexPath];
     //NSLog(@"text: %@",cell.textLabel.text);
     
-    return cell.textLabel.text;
+    int tag = (int)table.tag;
+    
+    switch (tag) {
+        case CATEGORY_TABLE:{
+            CustomCategoriesTableViewCell *cell = (CustomCategoriesTableViewCell *)[table cellForRowAtIndexPath:selectedIndexPath];
+            return cell.categoriesLabel;
+            break;
+        }
+        case BASE_CURRENCY_TABLE:{
+            UITableViewCell *cell = [table cellForRowAtIndexPath:selectedIndexPath];
+            return cell.textLabel.text;
+            return @"";
+            break;
+        }
+        case TARGET_CURRENCY_TABLE:{
+            return @"";
+            break;
+        }
+        default:{
+            return @"";
+            break;
+        }
+    }
+    
 }
 
 
@@ -133,17 +167,24 @@
     
     switch (tag) {
         case CATEGORY_TABLE:{
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Category Cell"];
+            //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Category Cell"];
+            
+            CustomCategoriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Categories Cell" forIndexPath:indexPath];
+            
             if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Category Cell"];
+                cell = [[CustomCategoriesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Categories Cell"];
             }
+            
+            // Fix iOS 7 Bug that make separator lines disappear
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.backgroundColor = [UIColor clearColor];
             
             NSArray *categories = [exchangeManager getAllCategories];
             
             ExchangeCategory *cat = [categories objectAtIndex:[indexPath row]];
             
-            [cell.textLabel setText:cat.exchangeCategoryName];
-            //[cell.imageView setImage:cat.exchangeCategoryIcon];
+            [cell setIcon:cat.exchangeCategoryIcon];
+            [cell setCategoriesLabel:cat.exchangeCategoryName];
             
             return cell;
             break;
@@ -155,8 +196,16 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Base Cell"];
             }
             
+            // Fix iOS 7 Bug that make separator lines disappear
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            
             NSArray *currencyCollections = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:selectedExchangeCategoryName];
+            
             CurrencyCollection *collection = [currencyCollections objectAtIndex:[indexPath row]];
+            
+            //NSLog(@"Hey:%@",collection.currencyCollectionName);
+            
             [cell.textLabel setText:collection.currencyCollectionName];
             return cell;
             
@@ -169,6 +218,10 @@
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Target Cell"];
             }
+            
+            // Fix iOS 7 Bug that make separator lines disappear
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.backgroundColor = [UIColor clearColor];
             
             NSArray *ar = [exchangeManager getItemsFromCurrencyCollectionWithName:selectedBaseCurrencyName
                                                           andExchangeCategoryName:selectedExchangeCategoryName];
@@ -195,10 +248,19 @@
     switch (tag) {
         case CATEGORY_TABLE:{
             selectedExchangeCategoryName = [self getSelectedNameForTableView:self.categoriesTableView];
-            //NSLog(@"selected Category: %@",selectedExchangeCategoryName);
+            NSLog(@"selected Category: %@",selectedExchangeCategoryName);
 
             [self.baseCurrencyTableView reloadData];
             //NSLog(@"Reloading Data");
+            
+            // Getting selected cell
+            CustomCategoriesTableViewCell *cell = (CustomCategoriesTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+            
+            // Set selection style to NONE to avoid blue or grey default selection
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+            // Set Highlited to YES
+            [cell setHighlighted:YES];
 
             break;
         }
@@ -214,6 +276,11 @@
     }
 }
 
-
+-(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    CustomCategoriesTableViewCell *cell = (CustomCategoriesTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell setHighlighted:NO];
+}
 
 @end

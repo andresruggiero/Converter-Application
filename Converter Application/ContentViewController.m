@@ -11,6 +11,7 @@
 #import "CurrencyCollection.h"
 #import "CustomContentCell.h"
 #import "Item.h"
+#import "StyleKitName.h"
 
 @interface ContentViewController ()
 
@@ -22,11 +23,13 @@
 }
 
 @synthesize exchangeManager;
+@synthesize contentTableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     exchangeManager = [ExchangeManager sharedManager];
+    [self.contentTableView setBackgroundColor:[StyleKitName redBaseColor]];
     
     /*NSArray *arr = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:@"Volume"];
     
@@ -70,6 +73,8 @@
 }
 
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CustomContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Custom Cell" forIndexPath:indexPath];
@@ -77,6 +82,10 @@
     if (cell == nil) {
         cell = [[CustomContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Custom Cell"];
     }
+    
+    // Fix iOS 7 Bug that make separator lines disappear
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     
     NSMutableArray *array = [exchangeManager getCurrencyCollectionsWithNames:message andExchangeCategoryName:@"Currency"];
     
@@ -101,6 +110,29 @@
     return cell;
 }
 
+#pragma mark - UITableView Delegate Methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    // Getting selected cell
+    CustomContentCell *cell = (CustomContentCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    // Set selection style to NONE to avoid blue or grey default selection
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    // Set Highlited to YES
+    [cell setHighlighted:YES];
+}
+
+-(void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    CustomContentCell *cell = (CustomContentCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    [cell setHighlighted:NO];
+}
 
 /*
 // Override to support conditional editing of the table view.
