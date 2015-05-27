@@ -29,6 +29,7 @@
     [super viewDidLoad];
     
     NSLog(@"Log Test");
+    NSLog(@"Testing");
     
     exchangeManager = [ExchangeManager sharedManager];
     [self.contentTableView setBackgroundColor:[StyleKitName redBaseColor]];
