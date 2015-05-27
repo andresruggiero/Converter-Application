@@ -21,12 +21,6 @@
 		4C0AF9FF1AB34DDC00BBB61F /* StoreCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0AF9FC1AB34DDC00BBB61F /* StoreCoordinator.m */; };
 		4C0AFA001AB34DDC00BBB61F /* PListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0AF9FE1AB34DDC00BBB61F /* PListManager.m */; };
 		4C0AFA031AB34F9200BBB61F /* ParseBackEndManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0AFA021AB34F9200BBB61F /* ParseBackEndManager.m */; };
-		4C0B67B41B16338B00EC4318 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0B67AE1B16338B00EC4318 /* Bolts.framework */; };
-		4C0B67B51B16338B00EC4318 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0B67AF1B16338B00EC4318 /* Parse.framework */; };
-		4C0B67B61B16338B00EC4318 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0B67B01B16338B00EC4318 /* ParseCrashReporting.framework */; };
-		4C0B67B71B16338B00EC4318 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0B67B11B16338B00EC4318 /* ParseFacebookUtils.framework */; };
-		4C0B67B81B16338B00EC4318 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0B67B21B16338B00EC4318 /* ParseFacebookUtilsV4.framework */; };
-		4C0B67B91B16338B00EC4318 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0B67B31B16338B00EC4318 /* ParseUI.framework */; };
 		4C5EB4AF1AE0739A00FDFE53 /* Money_Bag-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EB4AE1AE0739A00FDFE53 /* Money_Bag-100.png */; };
 		4C8B0D841B12A71800C7FC42 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0AF9CA1AB34A2C00BBB61F /* AudioToolbox.framework */; };
 		4C8B0D851B12A71E00C7FC42 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0AF9CC1AB34A3300BBB61F /* CFNetwork.framework */; };
@@ -49,6 +43,13 @@
 		4CD23C2A1AC0A6F000A9269E /* Length-50 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD23C271AC0A6F000A9269E /* Length-50 (1).png */; };
 		4CD23C2B1AC0A6F000A9269E /* money_bag-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD23C281AC0A6F000A9269E /* money_bag-50.png */; };
 		4CD23C2C1AC0A6F000A9269E /* Volume-50 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD23C291AC0A6F000A9269E /* Volume-50 (1).png */; };
+		4CECE7BF1B16350A009E4ECF /* framework in Resources */ = {isa = PBXBuildFile; fileRef = 4CECE7BE1B16350A009E4ECF /* framework */; };
+		4CECE7C91B16365D009E4ECF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CECE7C31B16365D009E4ECF /* Bolts.framework */; };
+		4CECE7CA1B16365D009E4ECF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CECE7C41B16365D009E4ECF /* Parse.framework */; };
+		4CECE7CB1B16365D009E4ECF /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CECE7C51B16365D009E4ECF /* ParseCrashReporting.framework */; };
+		4CECE7CC1B16365D009E4ECF /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CECE7C61B16365D009E4ECF /* ParseFacebookUtils.framework */; };
+		4CECE7CD1B16365D009E4ECF /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CECE7C71B16365D009E4ECF /* ParseFacebookUtilsV4.framework */; };
+		4CECE7CE1B16365D009E4ECF /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CECE7C81B16365D009E4ECF /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,12 +101,6 @@
 		4C0AF9FE1AB34DDC00BBB61F /* PListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PListManager.m; sourceTree = "<group>"; };
 		4C0AFA011AB34F9200BBB61F /* ParseBackEndManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseBackEndManager.h; sourceTree = "<group>"; };
 		4C0AFA021AB34F9200BBB61F /* ParseBackEndManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseBackEndManager.m; sourceTree = "<group>"; };
-		4C0B67AE1B16338B00EC4318 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		4C0B67AF1B16338B00EC4318 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		4C0B67B01B16338B00EC4318 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		4C0B67B11B16338B00EC4318 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		4C0B67B21B16338B00EC4318 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
-		4C0B67B31B16338B00EC4318 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		4C5EB4AE1AE0739A00FDFE53 /* Money_Bag-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Money_Bag-100.png"; sourceTree = "<group>"; };
 		4CC60B071AB9DE4100A5B346 /* Units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Units.plist; sourceTree = "<group>"; };
 		4CC60B091AB9E01900A5B346 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
@@ -123,6 +118,13 @@
 		4CD23C271AC0A6F000A9269E /* Length-50 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Length-50 (1).png"; sourceTree = "<group>"; };
 		4CD23C281AC0A6F000A9269E /* money_bag-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "money_bag-50.png"; sourceTree = "<group>"; };
 		4CD23C291AC0A6F000A9269E /* Volume-50 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Volume-50 (1).png"; sourceTree = "<group>"; };
+		4CECE7BE1B16350A009E4ECF /* framework */ = {isa = PBXFileReference; lastKnownFileType = folder; path = framework; sourceTree = "<group>"; };
+		4CECE7C31B16365D009E4ECF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		4CECE7C41B16365D009E4ECF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		4CECE7C51B16365D009E4ECF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		4CECE7C61B16365D009E4ECF /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		4CECE7C71B16365D009E4ECF /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		4CECE7C81B16365D009E4ECF /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,15 +135,15 @@
 				4C8B0D8E1B12A76100C7FC42 /* libsqlite3.dylib in Frameworks */,
 				4C8B0D8D1B12A75800C7FC42 /* libz.dylib in Frameworks */,
 				4C8B0D8C1B12A74F00C7FC42 /* SystemConfiguration.framework in Frameworks */,
-				4C0B67B41B16338B00EC4318 /* Bolts.framework in Frameworks */,
+				4CECE7C91B16365D009E4ECF /* Bolts.framework in Frameworks */,
 				4C8B0D8B1B12A74900C7FC42 /* StoreKit.framework in Frameworks */,
-				4C0B67B61B16338B00EC4318 /* ParseCrashReporting.framework in Frameworks */,
+				4CECE7CB1B16365D009E4ECF /* ParseCrashReporting.framework in Frameworks */,
 				4C8B0D8A1B12A74400C7FC42 /* Security.framework in Frameworks */,
-				4C0B67B51B16338B00EC4318 /* Parse.framework in Frameworks */,
-				4C0B67B71B16338B00EC4318 /* ParseFacebookUtils.framework in Frameworks */,
-				4C0B67B91B16338B00EC4318 /* ParseUI.framework in Frameworks */,
+				4CECE7CA1B16365D009E4ECF /* Parse.framework in Frameworks */,
+				4CECE7CC1B16365D009E4ECF /* ParseFacebookUtils.framework in Frameworks */,
+				4CECE7CE1B16365D009E4ECF /* ParseUI.framework in Frameworks */,
 				4C8B0D891B12A73D00C7FC42 /* QuartzCore.framework in Frameworks */,
-				4C0B67B81B16338B00EC4318 /* ParseFacebookUtilsV4.framework in Frameworks */,
+				4CECE7CD1B16365D009E4ECF /* ParseFacebookUtilsV4.framework in Frameworks */,
 				4C8B0D881B12A73700C7FC42 /* MobileCoreServices.framework in Frameworks */,
 				4C8B0D871B12A72F00C7FC42 /* CoreLocation.framework in Frameworks */,
 				4C8B0D861B12A72800C7FC42 /* CoreGraphics.framework in Frameworks */,
@@ -168,6 +170,7 @@
 				4C5EB4AE1AE0739A00FDFE53 /* Money_Bag-100.png */,
 				4CD23C291AC0A6F000A9269E /* Volume-50 (1).png */,
 				4C0AF9A11AB349B600BBB61F /* Converter Application */,
+				4C0AF9E01AB34AD000BBB61F /* Frameworks */,
 				4C0AF9BB1AB349B600BBB61F /* Converter ApplicationTests */,
 				4C0AF9A01AB349B600BBB61F /* Products */,
 			);
@@ -185,19 +188,13 @@
 		4C0AF9A11AB349B600BBB61F /* Converter Application */ = {
 			isa = PBXGroup;
 			children = (
-				4C0B67AE1B16338B00EC4318 /* Bolts.framework */,
-				4C0B67AF1B16338B00EC4318 /* Parse.framework */,
-				4C0B67B01B16338B00EC4318 /* ParseCrashReporting.framework */,
-				4C0B67B11B16338B00EC4318 /* ParseFacebookUtils.framework */,
-				4C0B67B21B16338B00EC4318 /* ParseFacebookUtilsV4.framework */,
-				4C0B67B31B16338B00EC4318 /* ParseUI.framework */,
+				4CECE7BE1B16350A009E4ECF /* framework */,
 				4C0AF9F81AB34D6300BBB61F /* Model */,
 				4C0AF9EB1AB34D3600BBB61F /* Controller */,
 				4C0AF9EA1AB34D3100BBB61F /* View */,
 				4C0AF9A61AB349B600BBB61F /* AppDelegate.h */,
 				4C0AF9A71AB349B600BBB61F /* AppDelegate.m */,
 				4C0AF9AF1AB349B600BBB61F /* Images.xcassets */,
-				4C0AF9E01AB34AD000BBB61F /* Frameworks */,
 				4C0AF9A21AB349B600BBB61F /* Supporting Files */,
 			);
 			path = "Converter Application";
@@ -233,20 +230,15 @@
 		4C0AF9E01AB34AD000BBB61F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C0AF9DE1AB34A8000BBB61F /* libsqlite3.dylib */,
-				4C0AF9DC1AB34A7600BBB61F /* libz.dylib */,
-				4C0AF9DA1AB34A6900BBB61F /* SystemConfiguration.framework */,
-				4C0AF9D81AB34A6300BBB61F /* StoreKit.framework */,
-				4C0AF9D61AB34A5600BBB61F /* Security.framework */,
-				4C0AF9D41AB34A4F00BBB61F /* QuartzCore.framework */,
-				4C0AF9D21AB34A4700BBB61F /* MobileCoreServices.framework */,
-				4C0AF9D01AB34A4000BBB61F /* CoreLocation.framework */,
-				4C0AF9CE1AB34A3900BBB61F /* CoreGraphics.framework */,
-				4C0AF9CC1AB34A3300BBB61F /* CFNetwork.framework */,
-				4C0AF9CA1AB34A2C00BBB61F /* AudioToolbox.framework */,
+				4CECE7C31B16365D009E4ECF /* Bolts.framework */,
+				4CECE7C41B16365D009E4ECF /* Parse.framework */,
+				4CECE7C51B16365D009E4ECF /* ParseCrashReporting.framework */,
+				4CECE7C61B16365D009E4ECF /* ParseFacebookUtils.framework */,
+				4CECE7C71B16365D009E4ECF /* ParseFacebookUtilsV4.framework */,
+				4CECE7C81B16365D009E4ECF /* ParseUI.framework */,
+				4CECE7C21B16362C009E4ECF /* System Frameworks */,
 			);
 			name = Frameworks;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		4C0AF9EA1AB34D3100BBB61F /* View */ = {
@@ -314,6 +306,24 @@
 				4C0AFA021AB34F9200BBB61F /* ParseBackEndManager.m */,
 			);
 			name = Store;
+			sourceTree = "<group>";
+		};
+		4CECE7C21B16362C009E4ECF /* System Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C0AF9DE1AB34A8000BBB61F /* libsqlite3.dylib */,
+				4C0AF9DC1AB34A7600BBB61F /* libz.dylib */,
+				4C0AF9DA1AB34A6900BBB61F /* SystemConfiguration.framework */,
+				4C0AF9D81AB34A6300BBB61F /* StoreKit.framework */,
+				4C0AF9D61AB34A5600BBB61F /* Security.framework */,
+				4C0AF9D41AB34A4F00BBB61F /* QuartzCore.framework */,
+				4C0AF9D21AB34A4700BBB61F /* MobileCoreServices.framework */,
+				4C0AF9D01AB34A4000BBB61F /* CoreLocation.framework */,
+				4C0AF9CE1AB34A3900BBB61F /* CoreGraphics.framework */,
+				4C0AF9CC1AB34A3300BBB61F /* CFNetwork.framework */,
+				4C0AF9CA1AB34A2C00BBB61F /* AudioToolbox.framework */,
+			);
+			name = "System Frameworks";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +412,7 @@
 				4CD23C2B1AC0A6F000A9269E /* money_bag-50.png in Resources */,
 				4C0AF9B31AB349B600BBB61F /* LaunchScreen.xib in Resources */,
 				4C5EB4AF1AE0739A00FDFE53 /* Money_Bag-100.png in Resources */,
+				4CECE7BF1B16350A009E4ECF /* framework in Resources */,
 				4CD23C2C1AC0A6F000A9269E /* Volume-50 (1).png in Resources */,
 				4C0AF9B01AB349B600BBB61F /* Images.xcassets in Resources */,
 				4CD23C2A1AC0A6F000A9269E /* Length-50 (1).png in Resources */,
@@ -578,6 +589,8 @@
 					Application,
 					"$(PROJECT_DIR)/Converter",
 					Application,
+					"$(PROJECT_DIR)/Converter",
+					Application,
 				);
 				INFOPLIST_FILE = "Converter Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -598,6 +611,8 @@
 					"$(PROJECT_DIR)/Converter",
 					Application,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Converter",
+					Application,
 					"$(PROJECT_DIR)/Converter",
 					Application,
 					"$(PROJECT_DIR)/Converter",
