@@ -28,6 +28,62 @@
     return self;
 }
 
+-(void) uploadData {
+    
+    //NSArray *message = [exchangeManager loadParameter:@"currencyArray"];
+    
+    NSDictionary *messageDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"USD",@"USD",@"EUR",@"EUR",@"CHF",@"CHF",@"VEF",@"VEF", nil];
+    
+    //ExchangeCategory *exchangeCategory = [[ExchangeCategory alloc] initWithName:@"Currency" andIcon:nil];
+    
+    //NSMutableArray *arrayOfExchangeCategory = [[NSMutableArray alloc] init];
+    //NSMutableArray *arrayOfCurrencyCollection = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
+    query.limit = 1000;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
+            
+            NSMutableArray *arrayOfItems = [[NSMutableArray alloc] init];
+            
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                Item *item = [[Item alloc] init];
+                [item setBaseCurrency:object[@"baseCurrency"]];
+                [item setBaseName:object[@"baseName"]];
+                [item setTargetCurrency:object[@"targetCurrency"]];
+                [item setTargetName:object[@"targetName"]];
+                [item setExchangeRate:object[@"exchangeRate"]];
+                [arrayOfItems addObject:item];
+                //NSLog(@"Base:%@ Target:%@ Rate:%@",item.baseCurrency,item.targetName,item.exchangeRate);
+            }
+            
+            for (Item *item in arrayOfItems) {
+                if ([[messageDictionary allKeys] containsObject:item.baseCurrency]) {
+                    NSLog(@"Object Found: %@",item.baseCurrency);
+                }
+            }
+            
+            // I have all the items in-app, now I need to break them down and save them in each currencycollection
+            
+            // Creating a CurrencyCollection for each code
+            //CurrencyCollection *currencyCollection = [[CurrencyCollection alloc] initWithName:code andArrayOfItems:arrayOfItems];
+            
+            // Adding each currencyCollection to an array
+            //[arrayOfCurrencyCollection addObject:currencyCollection];
+            
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+}
+
 -(void) uploadDataFromParse{
     
     NSArray *message = [exchangeManager loadParameter:@"currencyArray"];

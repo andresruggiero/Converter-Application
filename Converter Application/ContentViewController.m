@@ -28,22 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"Log Test");
-    NSLog(@"Testing");
-    
     exchangeManager = [ExchangeManager sharedManager];
     [self.contentTableView setBackgroundColor:[StyleKitName redBaseColor]];
-    
-    /*NSArray *arr = [exchangeManager getAllCurrencyCollectionsFromCategoryWithName:@"Volume"];
-    
-    for (CurrencyCollection *coll in arr) {
-        
-        NSLog(@"%@",coll.currencyCollectionName);
-        NSArray *itemArray = coll.itemsArray;
-        for (Item *item in itemArray) {
-            NSLog(@"base: %@ target: %@",item.baseCurrency, item.targetCurrency);
-        }
-    }*/
     
     // Loading currencyArray config from Parse BaaS
     message = [[NSArray alloc] initWithArray:[exchangeManager loadParameter:@"currencyArray"]];
@@ -74,8 +60,6 @@
     NSMutableArray *array = [exchangeManager getCurrencyCollectionsWithNames:message andExchangeCategoryName:@"Currency"];
     return [array count];
 }
-
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

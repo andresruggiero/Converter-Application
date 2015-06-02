@@ -35,11 +35,11 @@
     if (highlighted) {
         self.isPressed = YES;
         [self setNeedsDisplay];
-        NSLog(@"Is Pressed");
+        //NSLog(@"Is Pressed");
     } else {
         self.isPressed = NO;
         [self setNeedsDisplay];
-        NSLog(@"Is not Pressed");
+        //NSLog(@"Is not Pressed");
     }
     
 }

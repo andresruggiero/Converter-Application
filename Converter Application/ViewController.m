@@ -26,53 +26,6 @@
     [super viewDidLoad];
     
     exchangeManager = [ExchangeManager sharedManager];
-    //self.storeCoordinator = [[StoreCoordinator alloc] init];
-    
-    /*PFQuery *query1 = [PFQuery queryWithClassName:@"Item"];
-    [query1 whereKey:@"category" equalTo:@"Currency"];
-    [query1 whereKey:@"targetCurrency" equalTo:@"EUR"];
-    
-    query1.limit = 200;
-    [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];*/
-    
-    /*NSLog(@"Getting the latest config...");
-    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig *config, NSError *error) {
-        if (!error) {
-            NSLog(@"Yay! Config was fetched from the server.");
-        } else {
-            NSLog(@"Failed to fetch. Using Cached Config.");
-            config = [PFConfig currentConfig];
-        }
-        
-        NSArray *welcomeMessage = config[@"currencyArray"];
-        if (!welcomeMessage) {
-            NSLog(@"Falling back to default message.");
-            //welcomeMessage = @"Welcome!";
-        }
-        NSLog(@"Welcome Messsage = %@", welcomeMessage);
-    }];*/
-    
-    /*ExchangeCategory *cat = [exchangeManager getExchangeCategoryWithName:@"Currency"];
-    
-    NSLog(@"Cat: %@",cat);
-    
-    CurrencyCollection *currcll = [cat.currencyCollectionArray objectAtIndex:0];
-    
-    Item *item = [currcll.itemsArray objectAtIndex:0];
-    
-    NSLog(@"Item: %@ %@ %@",item.baseCurrency, item.targetCurrency, item.exchangeRate);*/
     
     // Do any additional setup after loading the view, typically from a nib.
     

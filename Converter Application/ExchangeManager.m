@@ -157,7 +157,7 @@
 
 -(NSArray *) loadParameter:(NSString *)parameter{
     
-    PFConfig *config = [PFConfig getConfig];
+    /*PFConfig *config = [PFConfig getConfig];
     
     config = [PFConfig currentConfig];
     
@@ -169,8 +169,27 @@
         //welcomeMessage = @"Welcome!";
     }
     
-    return message;
+    return message;*/
     
+    /*NSArray __block *message;
+    
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig *config, NSError *error){
+    
+        if (!error) {
+            NSLog(@"Config was fetched from server");
+        } else {
+            NSLog(@"Failed to fetch. Using cached config");
+            config = [PFConfig currentConfig];
+        }
+        
+        message = config[parameter];
+    
+    }];
+    
+    return message;*/
+    
+    NSArray *message = [[NSArray alloc] initWithObjects:@"USD",@"EUR",@"CHF",@"VEF", nil];
+    return message;
 }
 
 @end
